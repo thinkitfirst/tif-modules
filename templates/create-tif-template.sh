@@ -105,7 +105,7 @@ cat >> "$templatesPHPIncludeFile" <<-EOF
 include_once("$templateName/functions.php");
 EOF
 
-templatesScssFile="..scss"
+templatesScssFile="./templates.scss"
 printf "Updating file %s \n" "$templatesScssFile"
 cat >> "$templatesScssFile" <<-EOF
 @import "$templateName/$templateName";
