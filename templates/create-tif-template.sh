@@ -118,7 +118,7 @@ cat > "$jsFile" <<- EOF
 
 EOF
 
-readmeFile="./$templateName/$templateName.md"
+readmeFile="./$templateName/readme.md"
 printf "Creating file %s \n" "$readmeFile"
 touch "$readmeFile"
 cat > "$readmeFile" <<- EOF
