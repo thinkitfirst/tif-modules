@@ -43,7 +43,6 @@ if (!defined('ABSPATH')) exit; ?>
 			</div>
 		<?php
 		endif;
-
 		do_action('header1_before_after_menu', $topline, 'after', 'topline-after'); ?>
 	</div>
 	<?php endif; ?>
@@ -54,9 +53,9 @@ if (!defined('ABSPATH')) exit; ?>
 		$main_menu['classes'] = array_filter(array_map('trim', $main_menu['classes']));
 	?>
 
-	<nav class="navbar navbar-expand-lg<?php echo (!empty($main_menu['classes']) && !empty($main_menu['classes']['main']) ? ' ' . $main_menu['classes']['main'] : ''); ?>">
-		
+	<nav class="navbar<?php echo (!empty($main_menu['classes']) && !empty($main_menu['classes']['main']) ? ' ' . $main_menu['classes']['main'] : ''); ?>">
 		<?php 
+		
 		do_action('header1_before_after_menu', $main_menu, 'before', 'menu-before');
 
 		// Logo?
@@ -66,13 +65,13 @@ if (!defined('ABSPATH')) exit; ?>
 		</a>
 		<?php endif; ?>
 
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainMenu" aria-controls="mainMenu" aria-expanded="false" aria-label="Toggle navigation">
+		<button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#mainMenu" aria-controls="mainMenu" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
 
 		<?php wp_nav_menu(array(
 			'theme_location' => $main_menu['location'],
-			'menu_class' => 'navbar-nav' . (!empty($main_menu['classes']) && !empty($main_menu['classes']['menu']) ? ' ' . $topline['classes']['menu'] : ''),
+			'menu_class' => 'nav navbar-nav' . (!empty($main_menu['classes']) && !empty($main_menu['classes']['menu']) ? ' ' . $main_menu['classes']['menu'] : ''),
 			'menu_id' => $main_menu['location'],
 			'depth' => !empty($main_menu['depth']) ? (int) $main_menu['depth'] : 1,
 			'container_class' => 'collapse navbar-collapse' . (!empty($main_menu['classes']) && !empty($main_menu['classes']['container']) ? ' ' . $main_menu['classes']['container'] : ''),
@@ -82,7 +81,5 @@ if (!defined('ABSPATH')) exit; ?>
 		do_action('header1_before_after_menu', $main_menu, 'after', 'menu-after'); ?>
 
 	</nav>
-
 	<?php endif; ?>
-
 </div>

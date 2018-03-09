@@ -2,9 +2,9 @@
   // Location: ./header-1/functions.php
 
 
-add_action('header1_before_after_menu', 'header1_before_after_menu', 10, 3);
+add_action('header1_before_after_menu', 'header1_before_after_menus', 10, 3);
 
-function header1_before_after_menu($menu, $type = 'before', $class = '')
+function header1_before_after_menus($menu, $type = 'before', $class = '')
 {
 	if (empty($menu) || empty($type)) return;
 

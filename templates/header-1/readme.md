@@ -34,9 +34,9 @@ $args = array(
 	), 
 	'main_menu' => array(
 		'classes' => array(
-			'main' => 'main-menu col-24',
+			'main' => 'navbar-expand-md navbar-light',
 			'container' => '',
-			'menu' => ''
+			'menu' => 'ml-auto'
 		),
 		'logo' => array(
 			'image' => get_stylesheet_directory_uri() . '/images/ceo-logo.svg', 
