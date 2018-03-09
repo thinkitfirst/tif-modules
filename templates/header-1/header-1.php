@@ -1,8 +1,6 @@
 <?php
 
-if (!defined('ABSPATH')) exit;
-
-?>
+if (!defined('ABSPATH')) exit; ?>
 
 <div class="full-width header-1">
 	<?php if (!empty($topline)): ?>
@@ -32,13 +30,17 @@ if (!defined('ABSPATH')) exit;
 	</div>
 	<?php endif; ?>
 
-	<?php if (!empty($main_location) && has_nav_menu($main_location)): ?>
+	<?php if (!empty($main_menu)): ?>
 
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	<nav class="navbar navbar-expand-lg">
 		
-		<?php if (!empty($logo)): ?>
+		<?php 
+		do_action('before_main_menu', $main_menu);
+
+		// Logo?
+		if (!empty($main_menu['logo'])): ?>
 		<a class="navbar-brand" href="<?php echo site_url(); ?>">
-			<img<?php echo !empty($logo['classes']) ? ' class="' . implode(' ', $logo['classes']) . '"' : ''; ?> src="<?php echo $logo['image']; ?>" width="<?php echo trim(str_replace('px', '', $logo['width'])); ?>" height="<?php echo trim(str_replace('px', '', $logo['height'])); ?>" alt="<?php bloginfo('name'); ?>" />
+			<img<?php echo !empty($main_menu['logo']['classes']) ? ' class="' . implode(' ', $main_menu['logo']['classes']) . '"' : ''; ?> src="<?php echo $main_menu['logo']['image']; ?>" width="<?php echo trim(str_replace('px', '', $main_menu['logo']['width'])); ?>" height="<?php echo trim(str_replace('px', '', $main_menu['logo']['height'])); ?>" alt="<?php bloginfo('name'); ?>" />
 		</a>
 		<?php endif; ?>
 
@@ -48,56 +50,15 @@ if (!defined('ABSPATH')) exit;
 		</button>
 
 		<?php wp_nav_menu(array(
-			'theme_location' => $main_location,
+			'theme_location' => $main_menu['location'],
 			'menu_class' => 'navbar-nav',
-			'menu_id' => $main_location,
-			'depth' => 2,
-			'container_class' => 'collapse navbar-collapse',
+			'menu_id' => $main_menu['location'],
+			'depth' => !empty($main_menu['depth']) ? (int) $main_menu['depth'] : 1,
+			'container_class' => 'collapse navbar-collapse' . (!empty($main_menu['container_class']) ? ' ' . $main_menu['container_class'] : ''),
 			'container_id' => 'mainMenu',
 			'walker' => new wp_bootstrap_navwalker()
-		)); ?>
-
-
-		<?php /* MARKUP NEEDED for BS4 Menu
-		<div class="collapse navbar-collapse" id="navbarSupportedContent">
-			<ul class="navbar-nav mr-auto">
-				<li class="nav-item active">
-					<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="#">Link</a>
-				</li>
-				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					Dropdown
-					</a>
-					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="#">Action</a>
-						<a class="dropdown-item" href="#">Another action</a>
-						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="#">Something else here</a>
-					</div>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link disabled" href="#">Disabled</a>
-				</li>
-			</ul>
-
-		*/ ?>
-
-
-
-			<?php 
-			/*
-			// Example of adding search bar...
-			<form class="form-inline my-2 my-lg-0">
-				<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-			</form>
-			*/ 
-			?>
-		<?php /*
-		</div> */ ?>
+		)); 
+		do_action('after_main_menu', $main_menu); ?>
 
 	</nav>
 
