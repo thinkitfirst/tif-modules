@@ -25,8 +25,8 @@ $args = array(
 			'filters' => array('custom_topline_content' => ''), // Uses as many filters you need to output the content in the element, with the default value set to an empty string.
 		),
 		'after' => array(
-			'class' => 'col-24',
-			'content' => '<p>Some content goes in here for this section that gets displayed after the topline menu.</p>'
+			'class' => 'row',
+			'content' => '<p class="col-24 col-sm-12">Some content in here.</p><p class="col-24 col-sm-12">Some more content in here.</p>'
 		)
 	), 
 	'main_menu' => array(
