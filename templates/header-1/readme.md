@@ -10,6 +10,7 @@ Header with top menu and main menu.
 $args = array(
 	// Exclude 'topline' if this menu is not needed/used
 	'topline' => array(
+		'logo' => array(), // If not needed, no need to define the key in the array...
 		'location' => 'topline-menu', // If location is defined, will use the menu location, otherwise will use links
 		'links' => array(), // Adds ability to enter menu links manually
 		'depth' => 1, // How many levels should this menu sink down to (default: 1)
@@ -36,8 +37,21 @@ $args = array(
 			'width' => 155, 
 			'height' => 101
 		),
-		'location' => 'primary-menu', // Menu Location Name, if this is empty, or does not exist, links will be used instead.
-		'links' => array(), // Adds ability to enter menu links manually
+		'location' => '', // Menu Location Name, if this is empty, or does not exist, links will be used instead.
+		'links' => array( // Adds ability to enter menu links manually
+			0 => array(
+				'class' => 'external-link',
+				'href' => 'http://www.google.com',
+				'target' => '_blank',
+				'title' => __('Go to Google')
+			),
+			1 => array(
+				'class' => 'internal-link',
+				'href' => site_url(),
+				'title' => 'Go to Homepage'
+			)
+			// etc. etc.
+		), 
 		'depth' => 1,
 		'container_class' => '',
 		'before' => array(
