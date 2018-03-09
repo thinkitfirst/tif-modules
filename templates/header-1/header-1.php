@@ -3,19 +3,36 @@
 if (!defined('ABSPATH')) exit; ?>
 
 <div class="full-width header-1">
-	<?php if (!empty($topline)): ?>
-	<div class="topline">
+	<?php if (!empty($topline)): 
+
+	if (!empty($topline['classes']))
+		$topline['classes'] = array_filter(array_map('trim', $topline['classes']));
+	?>
+	<div class="topline<?php echo (!empty($topline['classes']) && !empty($topline['classes']['main']) ? ' ' . $topline['classes']['main'] : ''); ?>">
 		<?php do_action('header1_before_after_menu', $topline, 'before', 'topline-before');
-		 if (!empty($topline['location']) && has_nav_menu($topline['location'])):
+
+		if (!empty($topline['location']) && has_nav_menu($topline['location'])): ?>
+		 	<div class="inner-wrapper<?php echo !empty($topline['classes']) && !empty($topline['classes']['container']) ? ' ' . esc_attr($topline['classes']['container']) : ''; ?>">
+		 	<?php if (!empty($topline['logo'])): ?>
+			<a class="navbar-brand" href="<?php echo site_url(); ?>">
+				<img<?php echo !empty($topline['logo']['classes']) ? ' class="' . implode(' ', $topline['logo']['classes']) . '"' : ''; ?> src="<?php echo $topline['logo']['image']; ?>" width="<?php echo trim(str_replace('px', '', $topline['logo']['width'])); ?>" height="<?php echo trim(str_replace('px', '', $topline['logo']['height'])); ?>" alt="<?php bloginfo('name'); ?>" />
+			</a>
+			<?php endif;
 			wp_nav_menu(array(
 				'theme_location' => $topline['location'],
-				'container_class' => 'inner-wrapper' . (!empty($topline['container_class']) ? ' ' . esc_attr($topline['container_class']) : ''),
+				'container' => false,
 				'depth' => !empty($topline['depth']) ? (int) $topline['depth'] : 1,
 				'menu_id' => $topline['location'],
-				'menu_class' => 'topline-menu'
-			));
-		elseif (!empty($topline['links'])): ?>
+				'menu_class' => 'topline-menu' . (!empty($topline['classes']) && !empty($topline['classes']['menu']) ? ' ' . $topline['classes']['menu'] : '')
+			)); ?>
+			</div>
+		<?php elseif (!empty($topline['links'])): ?>
 			<div class="inner-wrapper<?php echo !empty($topline['container_class']) ? ' ' . esc_attr($topline['container_class']) : ''; ?>">
+				<?php if (!empty($topline['logo'])): ?>
+				<a class="navbar-brand" href="<?php echo site_url(); ?>">
+					<img<?php echo !empty($topline['logo']['classes']) ? ' class="' . implode(' ', $topline['logo']['classes']) . '"' : ''; ?> src="<?php echo $topline['logo']['image']; ?>" width="<?php echo trim(str_replace('px', '', $topline['logo']['width'])); ?>" height="<?php echo trim(str_replace('px', '', $topline['logo']['height'])); ?>" alt="<?php bloginfo('name'); ?>" />
+				</a>
+				<?php endif; ?>
 				<ul class="topline-menu">
 					<?php foreach($topline['links'] as $link): ?>
 					<li<?php echo !empty($link['class']) ? ' class="' . esc_attr($link['class']) . '"' : ''; ?>>
@@ -25,14 +42,19 @@ if (!defined('ABSPATH')) exit; ?>
 				</ul>
 			</div>
 		<?php
-		endif; 
+		endif;
+
 		do_action('header1_before_after_menu', $topline, 'after', 'topline-after'); ?>
 	</div>
 	<?php endif; ?>
 
-	<?php if (!empty($main_menu)): ?>
+	<?php if (!empty($main_menu)): 
 
-	<nav class="navbar navbar-expand-lg">
+	if (!empty($main_menu['classes']))
+		$main_menu['classes'] = array_filter(array_map('trim', $main_menu['classes']));
+	?>
+
+	<nav class="navbar navbar-expand-lg<?php echo (!empty($main_menu['classes']) && !empty($main_menu['classes']['main']) ? ' ' . $main_menu['classes']['main'] : ''); ?>">
 		
 		<?php 
 		do_action('header1_before_after_menu', $main_menu, 'before', 'menu-before');
@@ -50,10 +72,10 @@ if (!defined('ABSPATH')) exit; ?>
 
 		<?php wp_nav_menu(array(
 			'theme_location' => $main_menu['location'],
-			'menu_class' => 'navbar-nav',
+			'menu_class' => 'navbar-nav' . (!empty($main_menu['classes']) && !empty($main_menu['classes']['menu']) ? ' ' . $topline['classes']['menu'] : ''),
 			'menu_id' => $main_menu['location'],
 			'depth' => !empty($main_menu['depth']) ? (int) $main_menu['depth'] : 1,
-			'container_class' => 'collapse navbar-collapse' . (!empty($main_menu['container_class']) ? ' ' . $main_menu['container_class'] : ''),
+			'container_class' => 'collapse navbar-collapse' . (!empty($main_menu['classes']) && !empty($main_menu['classes']['container']) ? ' ' . $main_menu['classes']['container'] : ''),
 			'container_id' => 'mainMenu',
 			'walker' => new wp_bootstrap_navwalker()
 		)); 
