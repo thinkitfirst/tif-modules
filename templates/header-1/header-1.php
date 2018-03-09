@@ -26,13 +26,14 @@ if (!defined('ABSPATH')) exit; ?>
 				'menu_class' => 'topline-menu' . (!empty($topline['classes']) && !empty($topline['classes']['menu']) ? ' ' . $topline['classes']['menu'] : '')
 			)); ?>
 			</div>
-		<?php elseif (!empty($topline['links'])): ?>
-			<div class="inner-wrapper<?php echo !empty($topline['container_class']) ? ' ' . esc_attr($topline['container_class']) : ''; ?>">
+		<?php elseif (isset($topline['links'])): ?>
+			<div class="inner-wrapper<?php echo !empty($topline['classes']) && !empty($topline['classes']['container']) ? ' ' . esc_attr($topline['classes']['container']) : ''; ?>">
 				<?php if (!empty($topline['logo'])): ?>
 				<a class="navbar-brand" href="<?php echo site_url(); ?>">
 					<img<?php echo !empty($topline['logo']['classes']) ? ' class="' . implode(' ', $topline['logo']['classes']) . '"' : ''; ?> src="<?php echo $topline['logo']['image']; ?>" width="<?php echo trim(str_replace('px', '', $topline['logo']['width'])); ?>" height="<?php echo trim(str_replace('px', '', $topline['logo']['height'])); ?>" alt="<?php bloginfo('name'); ?>" />
 				</a>
-				<?php endif; ?>
+				<?php endif;
+				if (!empty($topline['links'])): ?>
 				<ul class="topline-menu">
 					<?php foreach($topline['links'] as $link): ?>
 					<li<?php echo !empty($link['class']) ? ' class="' . esc_attr($link['class']) . '"' : ''; ?>>
@@ -40,6 +41,7 @@ if (!defined('ABSPATH')) exit; ?>
 					</li>
 					<?php endforeach; ?>
 				</ul>
+				<?php endif; ?>
 			</div>
 		<?php
 		endif;
@@ -69,15 +71,30 @@ if (!defined('ABSPATH')) exit; ?>
 			<span class="navbar-toggler-icon"></span>
 		</button>
 
-		<?php wp_nav_menu(array(
-			'theme_location' => $main_menu['location'],
-			'menu_class' => 'nav navbar-nav' . (!empty($main_menu['classes']) && !empty($main_menu['classes']['menu']) ? ' ' . $main_menu['classes']['menu'] : ''),
-			'menu_id' => $main_menu['location'],
-			'depth' => !empty($main_menu['depth']) ? (int) $main_menu['depth'] : 1,
-			'container_class' => 'collapse navbar-collapse' . (!empty($main_menu['classes']) && !empty($main_menu['classes']['container']) ? ' ' . $main_menu['classes']['container'] : ''),
-			'container_id' => 'mainMenu',
-			'walker' => new wp_bootstrap_navwalker()
-		)); 
+		<?php 
+		if (!empty($main_menu['location']) && has_nav_menu($main_menu['location'])):
+			wp_nav_menu(array(
+				'theme_location' => $main_menu['location'],
+				'menu_class' => 'nav navbar-nav' . (!empty($main_menu['classes']) && !empty($main_menu['classes']['menu']) ? ' ' . $main_menu['classes']['menu'] : ''),
+				'menu_id' => $main_menu['location'],
+				'depth' => !empty($main_menu['depth']) ? (int) $main_menu['depth'] : 1,
+				'container_class' => 'collapse navbar-collapse' . (!empty($main_menu['classes']) && !empty($main_menu['classes']['container']) ? ' ' . $main_menu['classes']['container'] : ''),
+				'container_id' => 'mainMenu',
+				'walker' => new wp_bootstrap_navwalker()
+			));
+		elseif (!empty($main_menu['links'])): ?>
+			<div id="mainMenu" class="collapse navbar-collapse<?php echo (!empty($main_menu['classes']) && !empty($main_menu['classes']['container']) ? ' ' . $main_menu['classes']['container'] : ''); ?>">
+				<ul id="primary-menu" class="nav navbar-nav<?php echo (!empty($main_menu['classes']) && !empty($main_menu['classes']['menu']) ? ' ' . $main_menu['classes']['menu'] : ''); ?>">
+					<?php foreach($main_menu['links'] as $link): ?>
+					<li<?php echo !empty($link['class']) ? ' class="' . esc_attr($link['class']) . '"' : ''; ?>>
+						<a href="<?php echo esc_url($link['href']); ?>"<?php echo !empty($link['target']) ? ' target="' . $link['target'] . '"' : ''; ?>><?php echo esc_html($link['title']); ?></a>
+					</li>
+					<?php endforeach; ?>
+				</ul>
+			</div>
+		<?php
+		endif;
+
 		do_action('header1_before_after_menu', $main_menu, 'after', 'menu-after'); ?>
 
 	</nav>
