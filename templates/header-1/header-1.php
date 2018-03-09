@@ -5,7 +5,7 @@ if (!defined('ABSPATH')) exit; ?>
 <div class="full-width header-1">
 	<?php if (!empty($topline)): ?>
 	<div class="topline">
-		<?php do_action('before_topline_menu', $topline);
+		<?php do_action('header1_before_after_menu', $topline, 'before', 'topline-before');
 		 if (!empty($topline['location']) && has_nav_menu($topline['location'])):
 			wp_nav_menu(array(
 				'theme_location' => $topline['location'],
@@ -26,7 +26,7 @@ if (!defined('ABSPATH')) exit; ?>
 			</div>
 		<?php
 		endif; 
-		do_action('after_topline_menu', $topline); ?>
+		do_action('header1_before_after_menu', $topline, 'after', 'topline-after'); ?>
 	</div>
 	<?php endif; ?>
 
@@ -35,7 +35,7 @@ if (!defined('ABSPATH')) exit; ?>
 	<nav class="navbar navbar-expand-lg">
 		
 		<?php 
-		do_action('before_main_menu', $main_menu);
+		do_action('header1_before_after_menu', $main_menu, 'before', 'menu-before');
 
 		// Logo?
 		if (!empty($main_menu['logo'])): ?>
@@ -43,7 +43,6 @@ if (!defined('ABSPATH')) exit; ?>
 			<img<?php echo !empty($main_menu['logo']['classes']) ? ' class="' . implode(' ', $main_menu['logo']['classes']) . '"' : ''; ?> src="<?php echo $main_menu['logo']['image']; ?>" width="<?php echo trim(str_replace('px', '', $main_menu['logo']['width'])); ?>" height="<?php echo trim(str_replace('px', '', $main_menu['logo']['height'])); ?>" alt="<?php bloginfo('name'); ?>" />
 		</a>
 		<?php endif; ?>
-
 
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainMenu" aria-controls="mainMenu" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
@@ -58,7 +57,7 @@ if (!defined('ABSPATH')) exit; ?>
 			'container_id' => 'mainMenu',
 			'walker' => new wp_bootstrap_navwalker()
 		)); 
-		do_action('after_main_menu', $main_menu); ?>
+		do_action('header1_before_after_menu', $main_menu, 'after', 'menu-after'); ?>
 
 	</nav>
 

@@ -2,45 +2,24 @@
   // Location: ./header-1/functions.php
 
 
-add_action('before_topline_menu', 'tif_before_topline_menu', 10, 1);
+add_action('header1_before_after_menu', 'header1_before_after_menu', 10, 3);
 
-function tif_before_topline_menu($topline)
+function header1_before_after_menu($menu, $type = 'before', $class = '')
 {
-	if (!empty($topline['before']))
+	if (empty($menu) || empty($type)) return;
+
+	if (!empty($menu[$type]))
 	{
 		echo '
-		<div class="topline-before', (!empty($topline['before']['class']) ? ' ' . $topline['before']['class'] : ''), '">';
+		<div class="', $class, (!empty($menu[$type]['class']) ? ' ' . $menu[$type]['class'] : ''), '">';
 
-		if (!empty($topline['before']['filters']))
+		if (!empty($menu[$type]['filters']))
 		{
-			foreach($topline['before']['filters'] as $filter_name => $default_content)
-				echo apply_filters($filter_name, $default_content, $topline);
+			foreach($menu[$type]['filters'] as $filter_name => $default_content)
+				echo apply_filters($filter_name, $default_content, $menu);
 		}
-		else if (!empty($topline['before']['content']))
-			echo apply_filters('the_content', $topline['before']['content']);
-
-		echo '
-		</div>';
-	}
-}
-
-
-add_action('after_topline_menu', 'tif_after_topline_menu', 10, 1);
-
-function tif_after_topline_menu($topline)
-{
-	if (!empty($topline['after']))
-	{
-		echo '
-		<div class="topline-after', (!empty($topline['after']['class']) ? ' ' . $topline['after']['class'] : ''), '">';
-
-		if (!empty($topline['after']['filters']))
-		{
-			foreach($topline['after']['filters'] as $filter_name => $default_content)
-				echo apply_filters($filter_name, $default_content, $topline);
-		}
-		else if (!empty($topline['after']['content']))
-			echo apply_filters('the_content', $topline['after']['content']);
+		else if (!empty($menu[$type]['content']))
+			echo apply_filters('the_content', $menu[$type]['content']);
 
 		echo '
 		</div>';

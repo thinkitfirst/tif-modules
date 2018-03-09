@@ -22,7 +22,7 @@ $args = array(
 		*/
 		'before' => array(
 			'class' => 't-thin', // Class for the object
-			'filters' => array('ceo_topline_content' => ''), // Uses as many filters you need to output the content in the element, with the default value set to an empty string.
+			'filters' => array('custom_topline_content' => ''), // Uses as many filters you need to output the content in the element, with the default value set to an empty string.
 		),
 		'after' => array(
 			'class' => 'col-24',
@@ -30,14 +30,23 @@ $args = array(
 		)
 	), 
 	'main_menu' => array(
-		'location' => 'primary-menu', // Menu Location Name, if this is empty, or does not exist, links will be used instead.
-		'links' => array(), // Adds ability to enter menu links manually
-		'depth' => 1, 
 		'logo' => array(
 			'image' => get_stylesheet_directory_uri() . '/images/ceo-logo.svg', 
 			'classes' => array('default-top'), 
 			'width' => 155, 
 			'height' => 101
+		),
+		'location' => 'primary-menu', // Menu Location Name, if this is empty, or does not exist, links will be used instead.
+		'links' => array(), // Adds ability to enter menu links manually
+		'depth' => 1,
+		'container_class' => '',
+		'before' => array(
+			'class' => '',
+			'content' => '<div>Content in here that will go before the main menu, if needed.</div>'
+		),
+		'after' => array(
+			'class' => 'my-class',
+			'filters' array('custom_before_main_menu', '')
 		)
 	)
 );
