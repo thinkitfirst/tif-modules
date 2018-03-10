@@ -125,7 +125,7 @@ cat > "$readmeFile" <<- EOF
 # Description
 $templateDescription
 
-# Data Structures
+# Usuage Example
 
 EOF
 
