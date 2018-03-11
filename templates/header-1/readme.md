@@ -60,8 +60,8 @@ $args = array(
 				'title' => __('Go to Homepage')
 			)
 			// etc. etc.
-		), 
-		'depth' => 1,
+		),
+		'depth' => 2,
 		'before' => array(
 			'class' => '',
 			'content' => '<div>Content in here that will go before the main menu, if needed.</div>'

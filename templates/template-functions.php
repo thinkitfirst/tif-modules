@@ -15,6 +15,9 @@ function anchor_primitive($href, $classes, $target, $data_toggle, $data_target) 
 	$html = "<a href='{$href}' class='{$classes}' target='{$target}' data-toggle='{$data_toggle}' data-target='{$data_target}'></a>";
 }
 
+
+// FILTERS
+
 add_filter('filter_classes', 'tif_filter_classes', 10, 2);
 
 function tif_filter_classes($classes, $flatten = true)
