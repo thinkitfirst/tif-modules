@@ -66,8 +66,10 @@ if (!defined('ABSPATH')) exit; ?>
 		</a>
 		<?php endif; ?>
 
-		<button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#mainMenu" aria-controls="mainMenu" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
+		<button class="navbar-toggler ml-auto collapsed" type="button" data-toggle="collapse" data-target="#mainMenu" aria-controls="mainMenu" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="icon-bar top-bar"></span>
+			<span class="icon-bar middle-bar"></span>
+			<span class="icon-bar bottom-bar"></span>
 		</button>
 
 		<?php 
