@@ -3,6 +3,8 @@ Wordpress Header with the option of topline and main menu that links to a menu l
 
 # Usuage Example
 
+Note: Any classes that get defined can either be a string or an array of classes.
+
 ```php
 
 $args = array(
@@ -34,7 +36,7 @@ $args = array(
 	), 
 	'main_menu' => array(
 		'classes' => array(
-			'main' => 'navbar-expand-md navbar-light',
+			'main' => array('navbar-expand-md', 'navbar-light'),
 			'container' => '',
 			'menu' => 'ml-auto'
 		),
