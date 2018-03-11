@@ -57,7 +57,6 @@ if (!defined('ABSPATH')) exit; ?>
 
 	<nav class="navbar<?php echo (!empty($main_menu['classes']) && !empty($main_menu['classes']['main']) ? ' ' . apply_filters('filter_classes', $main_menu['classes']['main']) : ''); ?>">
 		<?php 
-		
 		do_action('header1_before_after_menu', $main_menu, 'before', 'menu-before');
 
 		// Logo?
