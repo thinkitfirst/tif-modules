@@ -11,7 +11,7 @@ function header1_before_after_menus($menu, $type = 'before', $class = '')
 	if (!empty($menu[$type]))
 	{
 		echo '
-		<div class="', $class, (!empty($menu[$type]['class']) ? ' ' . $menu[$type]['class'] : ''), '">';
+		<div class="', $class, (!empty($menu[$type]['class']) ? ' ' . apply_filters('filter_classes', $menu[$type]['class']) : ''), '">';
 
 		if (!empty($menu[$type]['filters']))
 		{
