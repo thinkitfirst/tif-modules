@@ -1,5 +1,5 @@
 
-
+$burger-color: #B6B6B6;
 
 .header-1 {
 
@@ -19,7 +19,7 @@
 	.icon-bar {
 		width: 26px; 
 		height: 3px;
-		background-color: #B6B6B6;
+		background-color: $burger-color;
 		display: block;
 		transition: all 0.2s;
 		margin-top: 4px
