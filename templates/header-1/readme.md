@@ -15,7 +15,16 @@ $args = array(
 			'container' => 'd-none', // appended menu container classes
 			'menu' => '' // appended menu classes
 		),
-		'logo' => array(), // If not needed, no need to define the key in the array...
+		// If not needed, no need to define this key in the array...
+		'logo' => array(
+			'image' => get_stylesheet_directory_uri() . '/images/ceo-logo-inverse.svg', 
+			'classes' => array(
+				'link' => array('col-24', 'text-center', 'order-last'),
+				'image' => 'default-top'
+			),
+			'width' => 106, 
+			'height' => 39
+		),
 		'location' => 'topline-menu', // If location is defined, will use the menu location, otherwise will use links
 		'links' => array(), // Adds ability to enter menu links manually
 		'depth' => 1, // How many levels should this menu sink down to (default: 1)
@@ -27,11 +36,16 @@ $args = array(
 		*/
 		'before' => array(
 			'class' => 't-thin', // Class for the object
-			'filters' => array('custom_topline_content' => ''), // Uses as many filters you need to output the content in the element, with the default value set to an empty string.
+			'filters' => array('custom_before_topline_content_filter' => ''), // Uses as many filters you need to output the content in the element, with the default value set to an empty string.
 		),
 		'after' => array(
 			'class' => 'row',
 			'content' => '<p class="col-24 col-sm-12">Some content in here.</p><p class="col-24 col-sm-12">Some more content in here.</p>'
+		),
+		// Wrap the logo and links inside of container elements if needed
+		'wrap' => array(
+			'before' => '<div class="container"><div class="row">',
+			'after' => '</div></div>'
 		)
 	), 
 	'main_menu' => array(
@@ -42,7 +56,10 @@ $args = array(
 		),
 		'logo' => array(
 			'image' => get_stylesheet_directory_uri() . '/images/ceo-logo.svg', 
-			'classes' => array('default-top'), 
+			'classes' => array(
+				'link' => 'default-top',
+				'image' => ''
+			), 
 			'width' => 155, 
 			'height' => 101
 		),
@@ -69,7 +86,8 @@ $args = array(
 		'after' => array(
 			'class' => 'my-class',
 			'filters' array('custom_after_main_menu', '')
-		)
+		),
+		'wrap' => array()
 	)
 );
 

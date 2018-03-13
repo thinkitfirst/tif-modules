@@ -4,7 +4,7 @@ include_once("template-includes.php");
 
 function tif_template_path($template_name) {
   // Shortcut to access TIF Template paths
-  return "inc/templates/$template_name/$template_name.php";
+  return "tif-modules/templates/$template_name/$template_name.php";
 }
 
 // PRIMITIVES
