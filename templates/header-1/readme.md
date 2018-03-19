@@ -91,6 +91,6 @@ $args = array(
 	)
 );
 
-tif_get_template('tif-modules/templates/header-1/header-1.php', $args); 
+tif_get_template(tif_template_path('header-1'), $args); 
 
 ```
