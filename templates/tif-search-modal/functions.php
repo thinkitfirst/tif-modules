@@ -13,3 +13,10 @@ function tif_search_modal_get_search_form($form)
 
 	return $form;
 }
+
+function tif_search_modal_scripts()
+{
+	wp_enqueue_script('tif-search-modal-script', get_stylesheet_directory_uri() . '/tif-modules/templates/tif-search-modal/tif-search-modal.js', array('jquery'), '1.0');
+}
+
+add_action('wp_enqueue_scripts', 'tif_search_modal_scripts');

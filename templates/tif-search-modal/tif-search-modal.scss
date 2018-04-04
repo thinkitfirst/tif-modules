@@ -2,6 +2,10 @@
 $white: #FFFFFF;
 $black: #000000;
 $gray: #A6A8AB;
+$underline: rgba($gray, 0.2);
+$underline-active: #FF3530;
+$close: $white;
+$close-hover: $underline-active;
 
 @mixin search-appearance ($value: none) {
 	-webkit-appearance: $value;
@@ -11,6 +15,9 @@ $gray: #A6A8AB;
 
 .modal-backdrop {
 	background-color: $white;
+	&.show {
+		@include opacity(0.9);
+	}
 }
 
 .tif-search-modal {
@@ -27,7 +34,8 @@ $gray: #A6A8AB;
 		background-color: $black;
 		color: $white;
 		.close {
-			color: $white;
+			opacity: 1;
+			color: $close;
 			position: absolute;
 			right: 1rem;
 			top: 0.5rem;
@@ -36,8 +44,14 @@ $gray: #A6A8AB;
 			padding: 0;
 			line-height: 0.8em;
 			outline: none;
+			text-shadow: 0 1px 0 $close;
+			@include transition(all 0.25 ease-in);
 			&:focus {
 				outline: none;
+			}
+			&:hover {
+				color: $close-hover;
+				text-shadow: 0 1px 0 $close-hover;
 			}
 		}
 		input {
@@ -55,7 +69,7 @@ $gray: #A6A8AB;
 			    color: $white;
 
 				&::-webkit-input-placeholder {
-					color: $gray;
+					color: rgba($gray, 0.2);
 				}
 				&:-moz-placeholder {
 					color: $gray;
@@ -75,9 +89,53 @@ $gray: #A6A8AB;
 		z-index: 9999;
 	}
 
-	#searchform {
+	.form-wrapper {
+		position: relative;
 		width: 100%;
+		border-bottom: 2px solid $underline;
+		#searchform {
+			width: 100%;
+		}
+		span {
+			position: absolute;
+			bottom: -2px;
+			left: 0;
+			height: 0;
+			overflow: hidden;
+			color: transparent;
+			font-size: 2.8rem;
+			-webkit-touch-callout: none;
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+			max-width: 100%;
+			border-top: 3px solid $underline-active;
+			border-radius: 2px;
+			min-width: 3px;
+			outline: none;
+		}
 	}
+
+/*
+div {
+  padding: 0.4rem 0;
+  border-bottom: 4px solid #383838;
+  width: 90vw;
+}
+span {
+  position: relative;
+  bottom: -11px;
+  color: white;
+  display: inline-block;
+  padding: 0.4rem 0;
+  border-bottom: 4px solid #D5BA5E;
+  outline: 0;
+}
+*/
+
+
+
 }
 
 // Small devices (landscape phones, 576px and up)
@@ -90,7 +148,7 @@ $gray: #A6A8AB;
 // Medium devices (tablets, 768px and up)
 @media (min-width: 768px) {
 	.tif-search-modal {
-		#searchform {
+		.form-wrapper {
 			width: 75%;
 		}
 	}
