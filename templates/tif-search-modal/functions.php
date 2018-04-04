@@ -20,3 +20,31 @@ function tif_search_modal_scripts()
 }
 
 add_action('wp_enqueue_scripts', 'tif_search_modal_scripts');
+
+/********************************************
+		SEARCH RELATED STUFF
+********************************************/
+function tif_search_modal_pre_get_posts($query) {
+
+    if ($query->is_search && !is_admin()) {
+
+    	// check if length of query > 3 but < 200
+    	$search_query = trim(get_search_query());
+    	$search_length = strlen($search_query);
+
+    	if ($search_length < 3 || $search_length > 200)
+    	{
+    		$query->set('error', 'Search term must be a minimum of 3 characters and a maximum of 200 characters.');
+    		return $query;
+    	}
+    	else
+    	{
+	        // $query->set('post_type', array('post', 'page'));
+	        $query->set('posts_per_page', 20);
+	    }
+    }
+
+	return $query;
+}
+
+add_filter('pre_get_posts','tif_search_modal_pre_get_posts');

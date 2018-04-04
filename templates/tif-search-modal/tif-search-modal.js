@@ -10,7 +10,14 @@ $(document).ready(function() {
 		});
 
 		$('#tif-search-modal').on('shown.bs.modal', function() {
-			$('#searchform').find('.search-field').focus();
+
+			var search_field = $('#searchform').find('.search-field'),
+				search_val = search_field.val();
+
+			if (search_val.length > 1)
+				search_field.focus().val('').val(search_val);
+			else
+				search_field.focus();
 		});
 	}
 

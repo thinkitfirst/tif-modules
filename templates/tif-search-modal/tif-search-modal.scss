@@ -87,6 +87,11 @@ $close-hover: $underline-active;
 	}
 	&.modal {
 		z-index: 9999;
+		opacity: 0;
+		@include transition(opacity 0.3s ease);
+		&.show {
+			opacity: 1;
+		}
 	}
 
 	.form-wrapper {
