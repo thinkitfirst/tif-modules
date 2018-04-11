@@ -7,6 +7,10 @@ function tif_template_path($template_name) {
   return "tif-modules/templates/$template_name/$template_name.php";
 }
 
+function get_tif_template_directory_uri($template_name = '') {
+	return get_stylesheet_directory_uri() . '/tif-modules/templates' . (!empty($template_name) ? '/' . $template_name : '');
+}
+
 // PRIMITIVES
 
 // Normal anchor primitive with href/classes/target
