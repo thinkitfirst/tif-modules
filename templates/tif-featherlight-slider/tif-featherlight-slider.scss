@@ -12,6 +12,7 @@ $close-gallery-hover: #FF6763;
 			outline: 0;
 
 			h3 {
+				opacity: 1;
 				position: absolute;
 				left: 0;
 				right: 0;
@@ -20,23 +21,17 @@ $close-gallery-hover: #FF6763;
 				margin: auto;
 				width: 100%;
 				height: 100%;
-				opacity: 0;
-				background: rgba(0, 0, 0, 0);
-				@include transition(all 0.25s ease-in);
+				background: rgba(0, 0, 0, 0.5);
 				span {
 					color: $white;
 					@include centerThis(absolute);
 					
 				}
 			}
-			&:hover {
-				h3 {
-					opacity: 1;
-					background: rgba(0, 0, 0, .5);
-				}
-			}
 		}
 	}
+
+	
 }
 
 .featherlight {
@@ -106,13 +101,29 @@ $close-gallery-hover: #FF6763;
 // Medium devices (tablets, 768px and up)
 @media (min-width: 768px) {
 	.tif-featherlight-slider {
-
+		a {
+			&.featherlight-link {
+				h3 {
+					opacity: 0;
+					background: rgba(0, 0, 0, 0);
+					@include transition(all 0.25s ease-in);
+				}
+				&:hover {
+					h3 {
+						opacity: 1;
+						background: rgba(0, 0, 0, .5);
+					}
+				}
+			}
+		}
 	}
 }
 
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) {
 	.tif-featherlight-slider {
+
+		
 
 	}
 }
