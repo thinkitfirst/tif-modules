@@ -1,5 +1,6 @@
 
 $white: #FFFFFF;
+$black: #000000;
 $close-gallery: $white;
 $close-gallery-hover: #FF6763;
 
@@ -35,6 +36,9 @@ $close-gallery-hover: #FF6763;
 }
 
 .featherlight {
+	&:last-of-type {
+		background: $black;
+	}
 	.featherlight-content {
 		position: static;
 		background: none;
