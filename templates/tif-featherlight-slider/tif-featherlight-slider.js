@@ -1,5 +1,3 @@
-
-
 jQuery(document).ready(function($) {
 
 	$('.featherlight-link').click(function() {
@@ -7,8 +5,9 @@ jQuery(document).ready(function($) {
 	});
 
 	// Let the page load before calling the featherlightGallery plugin, makes images slide smoother!
-	$(window).load(function() {
-		$('#tif-featherlight-slider').featherlightGallery();
+	$(window).on('load', function() {
+		if ($('#tif-featherlight-slider').length)
+			$('#tif-featherlight-slider').featherlightGallery();
 	});
 
 });
