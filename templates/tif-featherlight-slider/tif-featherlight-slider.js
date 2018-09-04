@@ -1,5 +1,3 @@
-
-
 jQuery(document).ready(function($) {
 
 	$('.featherlight-link').click(function() {

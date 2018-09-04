@@ -85,7 +85,7 @@ $args = array(
 		),
 		'after' => array(
 			'class' => 'my-class',
-			'filters' array('custom_after_main_menu', '')
+			'filters' => array('custom_after_main_menu', '')
 		),
 		'wrap' => array()
 	)
