@@ -51,7 +51,7 @@ if (!defined('ABSPATH')) exit; ?>
 				<?php
 				endif;
 				if (!empty($topline['links'])): ?>
-				<ul class="topline-menu">
+				<ul class="topline-menu<?php echo (!empty($topline['classes']) && !empty($topline['classes']['menu']) ? ' ' . apply_filters('filter_classes', $topline['classes']['menu']) : ''); ?>">
 					<?php foreach($topline['links'] as $link): ?>
 					<li<?php echo !empty($link['class']) ? ' class="' . apply_filters('filter_classes', $link['class']) . '"' : ''; ?>>
 					<?php if (!empty($link['href']) && !empty($link['title'])): ?>
@@ -90,13 +90,14 @@ if (!defined('ABSPATH')) exit; ?>
 
 		// Logo?
 		if (!empty($main_menu['logo'])): 
-			$main_menu['logo']['classes'] = !empty($main_menu['logo']['classes']) ? apply_filters('filter_classes', $main_menu['logo']['classes'], false) : array(); ?>
-		<a class="navbar-brand<?php !empty($main_menu['logo']['classes']['link']) ? ' ' . apply_filters('filter_classes', $main_menu['logo']['classes']['link']) : ''; ?>" href="<?php echo site_url(); ?>">
+			$main_menu['logo']['classes'] = !empty($main_menu['logo']['classes']) ? apply_filters('filter_classes', $main_menu['logo']['classes'], false) : array(); 
+		?>
+		<a class="navbar-brand<?php echo !empty($main_menu['logo']['classes']['link']) ? ' ' . apply_filters('filter_classes', $main_menu['logo']['classes']['link']) : ''; ?>" href="<?php echo site_url(); ?>">
 			<img<?php echo !empty($main_menu['logo']['classes']['image']) ? ' class="' . apply_filters('filter_classes', $main_menu['logo']['classes']['image']) . '"' : ''; ?> src="<?php echo $main_menu['logo']['image']; ?>" width="<?php echo trim(str_replace('px', '', $main_menu['logo']['width'])); ?>" height="<?php echo trim(str_replace('px', '', $main_menu['logo']['height'])); ?>" alt="<?php bloginfo('name'); ?>" />
 		</a>
 		<?php endif; ?>
 
-		<button class="navbar-toggler ml-auto collapsed" type="button" data-toggle="collapse" data-target="#mainMenu" aria-controls="mainMenu" aria-expanded="false" aria-label="Toggle navigation">
+		<button class="navbar-toggler<?php echo !empty($main_menu['logo']['classes']['button']) ? ' ' . apply_filters('filter_classes', $main_menu['logo']['classes']['button']) : ''; ?> collapsed" type="button" data-toggle="collapse" data-target="#mainMenu" aria-controls="mainMenu" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="icon-bar top-bar"></span>
 			<span class="icon-bar middle-bar"></span>
 			<span class="icon-bar bottom-bar"></span>
