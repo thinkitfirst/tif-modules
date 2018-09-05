@@ -14,6 +14,13 @@ function tif_search_modal_get_search_form($form)
 	return $form;
 }
 
+add_filter('tif_search_submit_button', 'tif_search_submit_button');
+
+function tif_search_submit_button()
+{
+    return '<input type="submit" class="submit' . apply_filters('tif_search_button_classes', ' d-none') . '" id="searchsubmit" value="' . apply_filters('tif_search_submit', __('Search', 'tif')) . '" />';
+}
+
 function tif_search_modal_scripts()
 {
 	wp_enqueue_script('tif-search-modal-script', get_stylesheet_directory_uri() . '/tif-modules/templates/tif-search-modal/tif-search-modal.js', array('jquery'), '1.0');
