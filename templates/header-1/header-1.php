@@ -70,7 +70,7 @@ if (!defined('ABSPATH')) exit; ?>
 			</div>
 		<?php
 		endif;
-		do_action('header1_before_after_menu', $topline, 'after', 'b'); ?>
+		do_action('header1_before_after_menu', $topline, 'after', 'topline-after'); ?>
 	</div>
 	<?php endif; ?>
 
