@@ -15,11 +15,16 @@ $error = get_query_var('error');
 	<div class="modal-dialog w-100 h-100">
 		<div class="modal-content">
 			<div class="modal-header py-4">
-				<div class="form-wrapper mx-auto my-2">
-					<span class="underline"><?php echo !empty($search_query) && empty($error) ? $search_query : ''; ?></span>
-					<?php get_search_form(); ?>
+				<div class="outer-wrapper">
+					<div class="form-wrapper">
+						<?php get_search_form(); ?>
+					</div>
+					<a href="#" class="close" data-dismiss="modal">
+						<span class="line"></span>
+						<span class="line"></span>
+					</a>
+					<?php // <button type="button" class="close" data-dismiss="modal">&times;</button> ?>
 				</div>
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
 			</div>
 			<?php
 			/*

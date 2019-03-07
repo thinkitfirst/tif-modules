@@ -6,7 +6,7 @@ $(document).ready(function() {
 	if ($('#tif-search-modal').length)
 	{
 		$('.search-field').on('input', function(e) {
-			$(this).closest('form').prev('.underline').text($(this).val());
+			$(this).parent().find('.underline').text($(this).val());
 		});
 
 		$('#tif-search-modal').on('shown.bs.modal', function() {
