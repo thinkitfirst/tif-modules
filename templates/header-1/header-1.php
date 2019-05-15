@@ -82,6 +82,8 @@ if (!defined('ABSPATH')) exit; ?>
 
 	<nav class="navbar<?php echo (!empty($main_menu['classes']) && !empty($main_menu['classes']['main']) ? ' ' . apply_filters('filter_classes', $main_menu['classes']['main']) : ''); ?>">
 		<?php 
+		do_action('header1_wrap_menu_content', $main_menu);
+
 		do_action('header1_before_after_menu', $main_menu, 'before', 'menu-before');
 
 		if (!empty($main_menu['wrap']) && !empty($main_menu['wrap']['before'])):
@@ -104,6 +106,8 @@ if (!defined('ABSPATH')) exit; ?>
 		</button>
 
 		<?php 
+		do_action('header1_before_nav_menu', $main_menu);
+
 		if (!empty($main_menu['location']) && has_nav_menu($main_menu['location'])):
 			wp_nav_menu(array(
 				'theme_location' => $main_menu['location'],
@@ -130,6 +134,8 @@ if (!defined('ABSPATH')) exit; ?>
 			</div>
 		<?php
 		endif;
+
+		do_action('header1_after_nav_menu', $main_menu);
 
 		if (!empty($main_menu['wrap']) && !empty($main_menu['wrap']['after'])):
  			echo $main_menu['wrap']['after'];
