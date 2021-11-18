@@ -1,0 +1,85 @@
+.cpb-wrap {
+    $cpb-alpha-color : #333263;
+    $cpb-bravo-color : #FF4F69;
+    $cpb-charlie-color : #A2A1B8;
+    $cpb-delta-color : #F7F7FC;
+    $cpb-echo-color : #01B5D5;
+    $white : #FFFFFF;
+
+    .tif-fw-bold {
+        font-weight: 700;
+    }
+
+    .tif-fw-normal {
+        font-weight: 400;
+    }
+
+    .tif-fw-light {
+        font-weight: 300;
+    }
+
+    .tif-color-white {
+        color: $white;
+    }
+
+    .tif-color-cpb-alpha {
+        color: $cpb-alpha-color;
+    }
+
+    .tif-color-cpb-bravo {
+        color: $cpb-bravo-color;
+    }
+    
+    .tif-color-cpb-charlie {
+        color: $cpb-charlie-color;
+    }
+
+    .tif-color-cpb-delta {
+        color: $cpb-delta-color;
+    }
+    
+    .tif-color-cpb-echo {
+        color: $cpb-echo-color;
+    }
+
+    .tif-bg-color-white {
+        background-color: $white;
+    }
+
+    .tif-fs-16 {
+        font-size: 16px;
+        line-height: 19px;
+    }
+
+    .tif-fs-21 {
+        font-size: 21px;
+        line-height: 28px;
+    }
+
+    .tif-calibre-regular {
+        font-family: $calibre-regular;
+    }
+
+    .tif-calibre-medium {
+        font-family: $calibre-medium;
+    }
+
+    .tif-calibre-bold {
+        font-family: $calibre-bold;
+    }
+
+    .tif-brix {
+        font-family: $brix-slab;
+    }
+
+    .tif-cpb-button {
+        font-size: 18px;
+        line-height: 21px;
+        padding: 10px 45px;
+        background-color: $cpb-echo-color;
+        color: $white;
+        display: inline-block;
+        border-radius: 24px;
+        font-family: $calibre-regular;
+    }
+}

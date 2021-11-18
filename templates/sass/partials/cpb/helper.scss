@@ -1,0 +1,139 @@
+$start: 0;
+$end: 220;
+$offset: 5;
+$unit: "px";
+
+@mixin list-loop($className, $styleName) {
+  $i: 0;
+
+  @while $i <= $end {
+    @if $i >= $start {
+      #{$className + $i} {
+        #{$styleName}: #{$i + $unit} !important;
+      }
+    }
+    $i: $i + $offset;
+  }
+}
+
+@mixin list-loop-duo($className, $styleName, $styleNameDuo) {
+  $i: 0;
+
+  @while $i <= $end {
+    @if $i >= $start {
+      #{$className + $i} {
+        #{$styleName}: #{$i + $unit} !important;
+        #{$styleNameDuo}: #{$i + $unit} !important;
+      }
+    }
+    $i: $i + $offset;
+  }
+}
+
+.tif-mx-auto {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+@include list-loop(".tif-m-", "margin");
+@include list-loop(".tif-p-", "padding");
+@include list-loop-duo(".tif-mx-", "margin-left", "margin-right");
+@include list-loop-duo(".tif-px-", "padding-left", "padding-right");
+@include list-loop-duo(".tif-my-", "margin-top", "margin-bottom");
+@include list-loop-duo(".tif-py-", "padding-top", "padding-bottom");
+@include list-loop(".tif-pl-", "padding-left");
+@include list-loop(".tif-pr-", "padding-right");
+@include list-loop(".tif-pt-", "padding-top");
+@include list-loop(".tif-pb-", "padding-bottom");
+@include list-loop(".tif-ml-", "margin-left");
+@include list-loop(".tif-mr-", "margin-right");
+@include list-loop(".tif-mt-", "margin-top");
+@include list-loop(".tif-mb-", "margin-bottom");
+
+@media (min-width: 768px) {
+  .tif-mx-sm-auto {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  @include list-loop(".tif-m-sm-", "margin");
+  @include list-loop(".tif-p-sm-", "padding");
+  @include list-loop-duo(".tif-mx-sm-", "margin-left", "margin-right");
+  @include list-loop-duo(".tif-px-sm-", "padding-left", "padding-right");
+  @include list-loop-duo(".tif-my-sm-", "margin-top", "margin-bottom");
+  @include list-loop-duo(".tif-py-sm-", "padding-top", "padding-bottom");
+  @include list-loop(".tif-pl-sm-", "padding-left");
+  @include list-loop(".tif-pr-sm-", "padding-right");
+  @include list-loop(".tif-pt-sm-", "padding-top");
+  @include list-loop(".tif-pb-sm-", "padding-bottom");
+  @include list-loop(".tif-ml-sm-", "margin-left");
+  @include list-loop(".tif-mr-sm-", "margin-right");
+  @include list-loop(".tif-mt-sm-", "margin-top");
+  @include list-loop(".tif-mb-sm-", "margin-bottom");
+}
+
+@media (min-width: 992px) {
+  .tif-mx-md-auto {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  @include list-loop(".tif-m-md-", "margin");
+  @include list-loop(".tif-p-md-", "padding");
+  @include list-loop-duo(".tif-mx-md-", "margin-left", "margin-right");
+  @include list-loop-duo(".tif-px-md-", "padding-left", "padding-right");
+  @include list-loop-duo(".tif-my-md-", "margin-top", "margin-bottom");
+  @include list-loop-duo(".tif-py-md-", "padding-top", "padding-bottom");
+  @include list-loop(".tif-pl-md-", "padding-left");
+  @include list-loop(".tif-pr-md-", "padding-right");
+  @include list-loop(".tif-pt-md-", "padding-top");
+  @include list-loop(".tif-pb-md-", "padding-bottom");
+  @include list-loop(".tif-ml-md-", "margin-left");
+  @include list-loop(".tif-mr-md-", "margin-right");
+  @include list-loop(".tif-mt-md-", "margin-top");
+  @include list-loop(".tif-mb-md-", "margin-bottom");
+}
+
+@media (min-width: 1200px) {
+  .tif-mx-lg-auto {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  @include list-loop(".tif-m-lg-", "margin");
+  @include list-loop(".tif-p-lg-", "padding");
+  @include list-loop-duo(".tif-mx-lg-", "margin-left", "margin-right");
+  @include list-loop-duo(".tif-px-lg-", "padding-left", "padding-right");
+  @include list-loop-duo(".tif-my-lg-", "margin-top", "margin-bottom");
+  @include list-loop-duo(".tif-py-lg-", "padding-top", "padding-bottom");
+  @include list-loop(".tif-pl-lg-", "padding-left");
+  @include list-loop(".tif-pr-lg-", "padding-right");
+  @include list-loop(".tif-pt-lg-", "padding-top");
+  @include list-loop(".tif-pb-lg-", "padding-bottom");
+  @include list-loop(".tif-ml-lg-", "margin-left");
+  @include list-loop(".tif-mr-lg-", "margin-right");
+  @include list-loop(".tif-mt-lg-", "margin-top");
+  @include list-loop(".tif-mb-lg-", "margin-bottom");
+}
+
+@media (min-width: 1440px) {
+  .tif-mx-xl-auto {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  @include list-loop(".tif-m-xl-", "margin");
+  @include list-loop(".tif-p-xl-", "padding");
+  @include list-loop-duo(".tif-mx-xl-", "margin-left", "margin-right");
+  @include list-loop-duo(".tif-px-xl-", "padding-left", "padding-right");
+  @include list-loop-duo(".tif-my-xl-", "margin-top", "margin-bottom");
+  @include list-loop-duo(".tif-py-xl-", "padding-top", "padding-bottom");
+  @include list-loop(".tif-pl-xl-", "padding-left");
+  @include list-loop(".tif-pr-xl-", "padding-right");
+  @include list-loop(".tif-pt-xl-", "padding-top");
+  @include list-loop(".tif-pb-xl-", "padding-bottom");
+  @include list-loop(".tif-ml-xl-", "margin-left");
+  @include list-loop(".tif-mr-xl-", "margin-right");
+  @include list-loop(".tif-mt-xl-", "margin-top");
+  @include list-loop(".tif-mb-xl-", "margin-bottom");
+}
