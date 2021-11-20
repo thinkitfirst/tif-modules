@@ -1,0 +1,39 @@
+.cpb-menu {
+    &.navbar {
+        position: sticky !important;
+        background-color: $white !important;
+    }
+
+    .navbar-nav {
+        li {
+            margin-right: 90px;
+            
+            a {
+                padding: 0;
+                color: $cpb-charlie-color !important;
+                margin: 0;
+
+                &.active {
+                    color: $cpb-alpha-color !important;
+
+                    &::after {
+                        background: none repeat scroll 0 0 $cpb-alpha-color;
+                        border: 0!important;
+                        content: "";
+                        display: block;
+                        height: 2px;
+                        margin-left: 0!important;
+                        position: relative;
+                        top: 40px;
+                        width: 100%;
+                        z-index: 9999;
+                    }
+                }
+            }
+
+            &:first-child {
+                margin-left: 50px;
+            }
+        }
+    }
+}

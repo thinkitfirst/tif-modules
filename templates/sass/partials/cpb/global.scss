@@ -1,11 +1,12 @@
-.cpb-wrap {
-    $cpb-alpha-color : #333263;
-    $cpb-bravo-color : #FF4F69;
-    $cpb-charlie-color : #A2A1B8;
-    $cpb-delta-color : #F7F7FC;
-    $cpb-echo-color : #01B5D5;
-    $white : #FFFFFF;
+$cpb-alpha-color : #333263;
+$cpb-bravo-color : #FF4F69;
+$cpb-charlie-color : #A2A1B8;
+$cpb-delta-color : #F7F7FC;
+$cpb-echo-color : #01B5D5;
+$white : #FFFFFF;
 
+
+.cpb-wrap {
     .tif-fw-bold {
         font-weight: 700;
     }
@@ -46,6 +47,26 @@
         background-color: $white;
     }
 
+    .tif-bg-color-cpb-alpha {
+        background-color : $cpb-alpha-color;
+    }
+
+    .tif-bg-color-cpb-bravo {
+        background-color : $cpb-bravo-color;
+    }
+    
+    .tif-bg-color-cpb-charlie {
+        background-color : $cpb-charlie-color;
+    }
+
+    .tif-bg-color-cpb-delta {
+        background-color : $cpb-delta-color;
+    }
+    
+    .tif-bg-color-cpb-echo {
+        background-color : $cpb-echo-color;
+    }
+
     .tif-fs-16 {
         font-size: 16px;
         line-height: 19px;
@@ -82,4 +103,8 @@
         border-radius: 24px;
         font-family: $calibre-regular;
     }
+}
+
+body {
+    position: relative;
 }

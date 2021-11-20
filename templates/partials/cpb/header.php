@@ -1,11 +1,11 @@
 <?php 
-    $imageVideo = get_field('cpb_image_video');
-	$button = get_field('cpb_button');
-	$smallTitle = get_field('cpb_small_title');
-	$title = get_field('cpb_title');
-	$caption = get_field('cpb_caption');
+    $imageVideo = get_field('cpb_header_image_video');
+	$button = get_field('cpb_header_button');
+	$smallTitle = get_field('cpb_header_small_title');
+	$title = get_field('cpb_header_title');
+	$caption = get_field('cpb_header_caption');
 ?>
-<div class="full-width <?= $imageVideo == 'image' ? 'cpb-bg-image' : 'cpb-bg-video' ?>" id="cpb_header" <?= $imageVideo == 'image' ? 'style="background-image:url('.get_field('cpb_image').');"' : '' ?>>
+<div class="full-width <?= $imageVideo == 'image' ? 'cpb-bg-image' : 'cpb-bg-video' ?>" id="cpb_header" <?= $imageVideo == 'image' ? 'style="background-image:url('.get_field('cpb_header_image').');"' : '' ?>>
 	<div class="container-fluid">
 		<div class="inner col-24 offset-sm-3 col-sm-18 offset-md-1 col-md-22 offset-lg-3 col-lg-18 tif-pt-130 tif-pb-75 tif-pt-md-160 tif-pb-md-160">
 			<div class="row">
