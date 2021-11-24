@@ -1,10 +1,9 @@
-$cpb-alpha-color : #333263;
-$cpb-bravo-color : #FF4F69;
-$cpb-charlie-color : #A2A1B8;
-$cpb-delta-color : #F7F7FC;
-$cpb-echo-color : #01B5D5;
-$white : #FFFFFF;
-
+$cpb-alpha-color: #333263;
+$cpb-bravo-color: #ff4f69;
+$cpb-charlie-color: #a2a1b8;
+$cpb-delta-color: #f7f7fc;
+$cpb-echo-color: #01b5d5;
+$white: #ffffff;
 
 .cpb-wrap {
     .tif-fw-bold {
@@ -30,7 +29,7 @@ $white : #FFFFFF;
     .tif-color-cpb-bravo {
         color: $cpb-bravo-color;
     }
-    
+
     .tif-color-cpb-charlie {
         color: $cpb-charlie-color;
     }
@@ -38,7 +37,7 @@ $white : #FFFFFF;
     .tif-color-cpb-delta {
         color: $cpb-delta-color;
     }
-    
+
     .tif-color-cpb-echo {
         color: $cpb-echo-color;
     }
@@ -48,23 +47,23 @@ $white : #FFFFFF;
     }
 
     .tif-bg-color-cpb-alpha {
-        background-color : $cpb-alpha-color;
+        background-color: $cpb-alpha-color;
     }
 
     .tif-bg-color-cpb-bravo {
-        background-color : $cpb-bravo-color;
+        background-color: $cpb-bravo-color;
     }
-    
+
     .tif-bg-color-cpb-charlie {
-        background-color : $cpb-charlie-color;
+        background-color: $cpb-charlie-color;
     }
 
     .tif-bg-color-cpb-delta {
-        background-color : $cpb-delta-color;
+        background-color: $cpb-delta-color;
     }
-    
+
     .tif-bg-color-cpb-echo {
-        background-color : $cpb-echo-color;
+        background-color: $cpb-echo-color;
     }
 
     .tif-fs-16 {
@@ -75,6 +74,11 @@ $white : #FFFFFF;
     .tif-fs-21 {
         font-size: 21px;
         line-height: 28px;
+    }
+
+    .tif-fs-75 {
+        font-size: 75px;
+        line-height: 24px;
     }
 
     .tif-calibre-regular {
@@ -102,6 +106,26 @@ $white : #FFFFFF;
         display: inline-block;
         border-radius: 24px;
         font-family: $calibre-regular;
+    }
+
+    .tif-shadow {
+        box-shadow: 0 3px 6px rgba($black, 0.16);
+    }
+
+    .tif-shadow-hover {
+        transition: box-shadow 0.3s ease-in;
+
+        &:hover {
+            box-shadow: 0 3px 20px rgba($black, 0.25);
+        }
+    }
+
+    .tif-shadow-subtle {
+        box-shadow: 0 3px 6px 0 rgba($black, 0.05);
+    }
+
+    .tif-shadow-vivid {
+        box-shadow: 0 3px 15px 5px rgba($black, 0.05);
     }
 }
 
