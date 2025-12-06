@@ -1,5 +1,19 @@
-
 $burger-color: #B6B6B6;
+
+.navigation-menu-banner {
+	background: url("../img/nav-menu-banner.png") center/cover no-repeat;
+	z-index: 1030;
+	
+	.banner-links {
+		letter-spacing: 0.65px;
+
+		a {
+			&:hover {
+				color: $cpb-bravo-color;
+			}
+		}
+	}
+}
 
 .header-1 {
 
@@ -17,43 +31,43 @@ $burger-color: #B6B6B6;
 	}
 
 	.icon-bar {
-		width: 26px; 
+		width: 26px;
 		height: 3px;
 		background-color: $burger-color;
 		display: block;
 		transition: all 0.2s;
 		margin-top: 4px
 	}
-	 
+
 	.navbar-toggler {
-	  border: none;
-	  background: transparent !important;
+		border: none;
+		background: transparent !important;
 	}
 
 	.navbar-toggler .top-bar {
-	  transform: rotate(45deg);
-	  transform-origin: 10% 10%;
+		transform: rotate(45deg);
+		transform-origin: 10% 10%;
 	}
-	 
+
 	.navbar-toggler .middle-bar {
-	  opacity: 0;
+		opacity: 0;
 	}
-	 
+
 	.navbar-toggler .bottom-bar {
-	  transform: rotate(-45deg);
-	  transform-origin: 10% 90%;
+		transform: rotate(-45deg);
+		transform-origin: 10% 90%;
 	}
-	 
+
 	.navbar-toggler.collapsed .top-bar {
-	  transform: rotate(0);
+		transform: rotate(0);
 	}
-	 
+
 	.navbar-toggler.collapsed .middle-bar {
-	  opacity: 1;
+		opacity: 1;
 	}
-	 
+
 	.navbar-toggler.collapsed .bottom-bar {
-	  transform: rotate(0);
+		transform: rotate(0);
 	}
 
 	ul {
@@ -61,11 +75,13 @@ $burger-color: #B6B6B6;
 			list-style: none;
 			display: block;
 			margin: auto;
+
 			li {
 				display: inline-block;
 			}
 		}
 	}
+
 	.topline {
 		p {
 			margin: 0;

@@ -2,27 +2,42 @@
 
 if (!defined('ABSPATH')) exit; ?>
 
+<?php if ($banner['status']): ?>
+	<div class="navigation-menu-banner tif-px-md-65 tif-px-35 tif-py-10 text-center position-relative">
+		<?php if ($banner['text']): ?>
+			<p class="tif-color-white tif-mb-0 tif-fs-16 tif-fw-bold">
+				<span class="tif-mr-25"><?php echo $banner['text']; ?></span>
+				<span class="tif-fs-13 banner-links text-nowrap">
+					<?php foreach ($banner['links'] as $link): ?>
+						<a href="<?php echo esc_url($link['link']['url']); ?>" class="tif-color-cpb-bravo tif-fs-13 tif-fw-bold text-uppercase"><?php echo $link['link']['title']; ?></a>
+						<?php if ($link !== end($banner['links'])): ?>&nbsp;&nbsp;|&nbsp;&nbsp;<?php endif; ?>
+					<?php endforeach; ?>
+				</span>
+			</p>
+		<?php endif; ?>
+	</div>
+<?php endif; ?>
 <div class="full-width header-1">
-	<?php if (!empty($topline)): 
+	<?php if (!empty($topline)):
 
-	if (!empty($topline['classes']))
-		$topline['classes'] = apply_filters('filter_classes', $topline['classes'], false);
+		if (!empty($topline['classes']))
+			$topline['classes'] = apply_filters('filter_classes', $topline['classes'], false);
 	?>
-	<div class="topline<?php echo (!empty($topline['classes']) && !empty($topline['classes']['main']) ? ' ' . apply_filters('filter_classes', $topline['classes']['main']) : ''); ?>">
-		<?php do_action('header1_before_after_menu', $topline, 'before', 'topline-before');
+		<div class="topline<?php echo (!empty($topline['classes']) && !empty($topline['classes']['main']) ? ' ' . apply_filters('filter_classes', $topline['classes']['main']) : ''); ?>">
+			<?php do_action('header1_before_after_menu', $topline, 'before', 'topline-before');
 
-		if (!empty($topline['location']) && has_nav_menu($topline['location'])): ?>
-		 	<div class="inner-wrapper<?php echo !empty($topline['classes']) && !empty($topline['classes']['container']) ? ' ' . apply_filters('filter_classes', $topline['classes']['container']) : ''; ?>">
-			 	<?php 
-			 		if (!empty($topline['wrap']) && !empty($topline['wrap']['before'])):
-			 			echo $topline['wrap']['before'];
-			 		endif;
+			if (!empty($topline['location']) && has_nav_menu($topline['location'])): ?>
+				<div class="inner-wrapper<?php echo !empty($topline['classes']) && !empty($topline['classes']['container']) ? ' ' . apply_filters('filter_classes', $topline['classes']['container']) : ''; ?>">
+					<?php
+					if (!empty($topline['wrap']) && !empty($topline['wrap']['before'])):
+						echo $topline['wrap']['before'];
+					endif;
 
-				 	if (!empty($topline['logo'])):
-				 		$topline['logo']['classes'] = !empty($topline['logo']['classes']) ? apply_filters('filter_classes', $topline['logo']['classes'], false) : array(); ?>
-					<a class="navbar-brand<?php echo !empty($topline['logo']['classes']) && !empty($topline['logo']['classes']['link']) ? ' ' . apply_filters('filter_classes', $topline['logo']['classes']['link']) : ''; ?>" href="<?php echo site_url(); ?>">
-						<img<?php echo !empty($topline['logo']['classes']) && !empty($topline['logo']['classes']['image']) ? ' class="' . apply_filters('filter_classes', $topline['logo']['classes']['image'])  . '"' : ''; ?> src="<?php echo $topline['logo']['image']; ?>" width="<?php echo trim(str_replace('px', '', $topline['logo']['width'])); ?>" height="<?php echo trim(str_replace('px', '', $topline['logo']['height'])); ?>" alt="<?php bloginfo('name'); ?>" />
-					</a>
+					if (!empty($topline['logo'])):
+						$topline['logo']['classes'] = !empty($topline['logo']['classes']) ? apply_filters('filter_classes', $topline['logo']['classes'], false) : array(); ?>
+						<a class="navbar-brand<?php echo !empty($topline['logo']['classes']) && !empty($topline['logo']['classes']['link']) ? ' ' . apply_filters('filter_classes', $topline['logo']['classes']['link']) : ''; ?>" href="<?php echo site_url(); ?>">
+							<img<?php echo !empty($topline['logo']['classes']) && !empty($topline['logo']['classes']['image']) ? ' class="' . apply_filters('filter_classes', $topline['logo']['classes']['image'])  . '"' : ''; ?> src="<?php echo $topline['logo']['image']; ?>" width="<?php echo trim(str_replace('px', '', $topline['logo']['width'])); ?>" height="<?php echo trim(str_replace('px', '', $topline['logo']['height'])); ?>" alt="<?php bloginfo('name'); ?>" />
+						</a>
 					<?php endif;
 					wp_nav_menu(array(
 						'theme_location' => $topline['location'],
@@ -33,116 +48,116 @@ if (!defined('ABSPATH')) exit; ?>
 					));
 
 					if (!empty($topline['wrap']) && !empty($topline['wrap']['after'])):
-						echo $topline['wrap']['after']; 
+						echo $topline['wrap']['after'];
 					endif; ?>
-			</div>
-		<?php elseif (isset($topline['links'])): ?>
-			<div class="inner-wrapper<?php echo !empty($topline['classes']) && !empty($topline['classes']['container']) ? ' ' . apply_filters('filter_classes', $topline['classes']['container']) : ''; ?>">
-				<?php 
-				if (!empty($topline['wrap']) && !empty($topline['wrap']['before'])):
-		 			echo $topline['wrap']['before'];
-		 		endif;
+				</div>
+			<?php elseif (isset($topline['links'])): ?>
+				<div class="inner-wrapper<?php echo !empty($topline['classes']) && !empty($topline['classes']['container']) ? ' ' . apply_filters('filter_classes', $topline['classes']['container']) : ''; ?>">
+					<?php
+					if (!empty($topline['wrap']) && !empty($topline['wrap']['before'])):
+						echo $topline['wrap']['before'];
+					endif;
 
-				if (!empty($topline['logo'])): 
-					$topline['logo']['classes'] = !empty($topline['logo']['classes']) ? apply_filters('filter_classes', $topline['logo']['classes'], false) : array(); ?>
-					<a class="navbar-brand<?php echo !empty($topline['logo']['classes']) && !empty($topline['logo']['classes']['link']) ? ' ' . apply_filters('filter_classes', $topline['logo']['classes']['link']) : ''; ?>" href="<?php echo site_url(); ?>">
-						<img<?php echo !empty($topline['logo']['classes']) && !empty($topline['logo']['classes']['image']) ? ' class="' . apply_filters('filter_classes', $topline['logo']['classes']['image']) . '"' : ''; ?> src="<?php echo $topline['logo']['image']; ?>" width="<?php echo trim(str_replace('px', '', $topline['logo']['width'])); ?>" height="<?php echo trim(str_replace('px', '', $topline['logo']['height'])); ?>" alt="<?php bloginfo('name'); ?>" />
-					</a>
-				<?php
-				endif;
-				if (!empty($topline['links'])): ?>
-				<ul class="topline-menu<?php echo (!empty($topline['classes']) && !empty($topline['classes']['menu']) ? ' ' . apply_filters('filter_classes', $topline['classes']['menu']) : ''); ?>">
-					<?php foreach($topline['links'] as $link): ?>
-					<li<?php echo !empty($link['class']) ? ' class="' . apply_filters('filter_classes', $link['class']) . '"' : ''; ?>>
-					<?php if (!empty($link['href']) && !empty($link['title'])): ?>
-						<a href="<?php echo esc_url($link['href']); ?>"<?php echo !empty($link['target']) ? ' target="' . $link['target'] . '"' : ''; ?>><?php echo esc_html($link['title']); ?></a>
-					<?php elseif (!empty($link['title'])): ?>
-						<?php echo esc_html($link['title']); ?>
-					<?php endif; ?>
-					</li>
-					<?php endforeach; ?>
-				</ul>
-				<?php endif;
+					if (!empty($topline['logo'])):
+						$topline['logo']['classes'] = !empty($topline['logo']['classes']) ? apply_filters('filter_classes', $topline['logo']['classes'], false) : array(); ?>
+						<a class="navbar-brand<?php echo !empty($topline['logo']['classes']) && !empty($topline['logo']['classes']['link']) ? ' ' . apply_filters('filter_classes', $topline['logo']['classes']['link']) : ''; ?>" href="<?php echo site_url(); ?>">
+							<img<?php echo !empty($topline['logo']['classes']) && !empty($topline['logo']['classes']['image']) ? ' class="' . apply_filters('filter_classes', $topline['logo']['classes']['image']) . '"' : ''; ?> src="<?php echo $topline['logo']['image']; ?>" width="<?php echo trim(str_replace('px', '', $topline['logo']['width'])); ?>" height="<?php echo trim(str_replace('px', '', $topline['logo']['height'])); ?>" alt="<?php bloginfo('name'); ?>" />
+						</a>
+					<?php
+					endif;
+					if (!empty($topline['links'])): ?>
+						<ul class="topline-menu<?php echo (!empty($topline['classes']) && !empty($topline['classes']['menu']) ? ' ' . apply_filters('filter_classes', $topline['classes']['menu']) : ''); ?>">
+							<?php foreach ($topline['links'] as $link): ?>
+								<li<?php echo !empty($link['class']) ? ' class="' . apply_filters('filter_classes', $link['class']) . '"' : ''; ?>>
+									<?php if (!empty($link['href']) && !empty($link['title'])): ?>
+										<a href="<?php echo esc_url($link['href']); ?>" <?php echo !empty($link['target']) ? ' target="' . $link['target'] . '"' : ''; ?>><?php echo esc_html($link['title']); ?></a>
+									<?php elseif (!empty($link['title'])): ?>
+										<?php echo esc_html($link['title']); ?>
+									<?php endif; ?>
+									</li>
+								<?php endforeach; ?>
+						</ul>
+					<?php endif;
 
-				if (!empty($topline['wrap']) && !empty($topline['wrap']['after'])):
-					echo $topline['wrap']['after'];
-				endif; ?>
-			</div>
-		<?php
-		endif;
-		do_action('header1_before_after_menu', $topline, 'after', 'topline-after'); ?>
-	</div>
+					if (!empty($topline['wrap']) && !empty($topline['wrap']['after'])):
+						echo $topline['wrap']['after'];
+					endif; ?>
+				</div>
+			<?php
+			endif;
+			do_action('header1_before_after_menu', $topline, 'after', 'topline-after'); ?>
+		</div>
 	<?php endif; ?>
 
-	<?php if (!empty($main_menu)): 
+	<?php if (!empty($main_menu)):
 
-	if (!empty($main_menu['classes']))
-		$main_menu['classes'] = apply_filters('filter_classes', $main_menu['classes'], false);
+		if (!empty($main_menu['classes']))
+			$main_menu['classes'] = apply_filters('filter_classes', $main_menu['classes'], false);
 	?>
 
-	<nav class="navbar<?php echo (!empty($main_menu['classes']) && !empty($main_menu['classes']['main']) ? ' ' . apply_filters('filter_classes', $main_menu['classes']['main']) : ''); ?>">
-		<?php 
-		do_action('header1_wrap_menu_content', $main_menu);
+		<nav class="navbar<?php echo (!empty($main_menu['classes']) && !empty($main_menu['classes']['main']) ? ' ' . apply_filters('filter_classes', $main_menu['classes']['main']) : ''); ?>">
+			<?php
+			do_action('header1_wrap_menu_content', $main_menu);
 
-		do_action('header1_before_after_menu', $main_menu, 'before', 'menu-before');
+			do_action('header1_before_after_menu', $main_menu, 'before', 'menu-before');
 
-		if (!empty($main_menu['wrap']) && !empty($main_menu['wrap']['before'])):
- 			echo $main_menu['wrap']['before'];
- 		endif;
+			if (!empty($main_menu['wrap']) && !empty($main_menu['wrap']['before'])):
+				echo $main_menu['wrap']['before'];
+			endif;
 
-		// Logo?
-		if (!empty($main_menu['logo'])): 
-			$main_menu['logo']['classes'] = !empty($main_menu['logo']['classes']) ? apply_filters('filter_classes', $main_menu['logo']['classes'], false) : array(); 
-		?>
-		<a class="navbar-brand<?php echo !empty($main_menu['logo']['classes']['link']) ? ' ' . apply_filters('filter_classes', $main_menu['logo']['classes']['link']) : ''; ?>" href="<?php echo site_url(); ?>">
-			<img<?php echo !empty($main_menu['logo']['classes']['image']) ? ' class="' . apply_filters('filter_classes', $main_menu['logo']['classes']['image']) . '"' : ''; ?> src="<?php echo $main_menu['logo']['image']; ?>" width="<?php echo trim(str_replace('px', '', $main_menu['logo']['width'])); ?>" height="<?php echo trim(str_replace('px', '', $main_menu['logo']['height'])); ?>" alt="<?php bloginfo('name'); ?>" />
-		</a>
-		<?php endif; ?>
+			// Logo?
+			if (!empty($main_menu['logo'])):
+				$main_menu['logo']['classes'] = !empty($main_menu['logo']['classes']) ? apply_filters('filter_classes', $main_menu['logo']['classes'], false) : array();
+			?>
+				<a class="navbar-brand<?php echo !empty($main_menu['logo']['classes']['link']) ? ' ' . apply_filters('filter_classes', $main_menu['logo']['classes']['link']) : ''; ?>" href="<?php echo site_url(); ?>">
+					<img<?php echo !empty($main_menu['logo']['classes']['image']) ? ' class="' . apply_filters('filter_classes', $main_menu['logo']['classes']['image']) . '"' : ''; ?> src="<?php echo $main_menu['logo']['image']; ?>" width="<?php echo trim(str_replace('px', '', $main_menu['logo']['width'])); ?>" height="<?php echo trim(str_replace('px', '', $main_menu['logo']['height'])); ?>" alt="<?php bloginfo('name'); ?>" />
+				</a>
+			<?php endif; ?>
 
-		<button class="navbar-toggler<?php echo !empty($main_menu['logo']['classes']['button']) ? ' ' . apply_filters('filter_classes', $main_menu['logo']['classes']['button']) : ''; ?> collapsed" type="button" data-toggle="collapse" data-target="#mainMenu" aria-controls="mainMenu" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="icon-bar top-bar"></span>
-			<span class="icon-bar middle-bar"></span>
-			<span class="icon-bar bottom-bar"></span>
-		</button>
+			<button class="navbar-toggler<?php echo !empty($main_menu['logo']['classes']['button']) ? ' ' . apply_filters('filter_classes', $main_menu['logo']['classes']['button']) : ''; ?> collapsed" type="button" data-toggle="collapse" data-target="#mainMenu" aria-controls="mainMenu" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="icon-bar top-bar"></span>
+				<span class="icon-bar middle-bar"></span>
+				<span class="icon-bar bottom-bar"></span>
+			</button>
 
-		<?php 
-		do_action('header1_before_nav_menu', $main_menu);
+			<?php
+			do_action('header1_before_nav_menu', $main_menu);
 
-		if (!empty($main_menu['location']) && has_nav_menu($main_menu['location'])):
-			wp_nav_menu(array(
-				'theme_location' => $main_menu['location'],
-				'menu_class' => 'nav navbar-nav' . (!empty($main_menu['classes']) && !empty($main_menu['classes']['menu']) ? ' ' . apply_filters('filter_classes', $main_menu['classes']['menu']) : ''),
-				'menu_id' => $main_menu['location'],
-				'depth' => !empty($main_menu['depth']) ? (int) $main_menu['depth'] : 1,
-				'container_class' => 'collapse navbar-collapse' . (!empty($main_menu['classes']) && !empty($main_menu['classes']['container']) ? ' ' . apply_filters('filter_classes', $main_menu['classes']['container']) : ''),
-				'container_id' => 'mainMenu',
-				'walker' => new wp_bootstrap_navwalker()
-			));
-		elseif (!empty($main_menu['links'])): ?>
-			<div id="mainMenu" class="collapse navbar-collapse<?php echo (!empty($main_menu['classes']) && !empty($main_menu['classes']['container']) ? ' ' . apply_filters('filter_classes', $main_menu['classes']['container']) : ''); ?>">
-				<ul id="primary-menu" class="nav navbar-nav<?php echo (!empty($main_menu['classes']) && !empty($main_menu['classes']['menu']) ? ' ' . apply_filters('filter_classes', $main_menu['classes']['menu']) : ''); ?>">
-					<?php foreach($main_menu['links'] as $link): ?>
-					<li<?php echo !empty($link['class']) ? ' class="' . apply_filters('filter_classes', $link['class']) . '"' : ''; ?>>
-					<?php if (!empty($link['href']) && !empty($link['title'])): ?>
-						<a href="<?php echo esc_url($link['href']); ?>"<?php echo !empty($link['target']) ? ' target="' . $link['target'] . '"' : ''; ?>><?php echo esc_html($link['title']); ?></a>
-					<?php elseif (!empty($link['title'])):
-						echo esc_html($link['title']);
-					endif; ?>
-					</li>
-					<?php endforeach; ?>
-				</ul>
-			</div>
-		<?php
-		endif;
+			if (!empty($main_menu['location']) && has_nav_menu($main_menu['location'])):
+				wp_nav_menu(array(
+					'theme_location' => $main_menu['location'],
+					'menu_class' => 'nav navbar-nav' . (!empty($main_menu['classes']) && !empty($main_menu['classes']['menu']) ? ' ' . apply_filters('filter_classes', $main_menu['classes']['menu']) : ''),
+					'menu_id' => $main_menu['location'],
+					'depth' => !empty($main_menu['depth']) ? (int) $main_menu['depth'] : 1,
+					'container_class' => 'collapse navbar-collapse' . (!empty($main_menu['classes']) && !empty($main_menu['classes']['container']) ? ' ' . apply_filters('filter_classes', $main_menu['classes']['container']) : ''),
+					'container_id' => 'mainMenu',
+					'walker' => new wp_bootstrap_navwalker()
+				));
+			elseif (!empty($main_menu['links'])): ?>
+				<div id="mainMenu" class="collapse navbar-collapse<?php echo (!empty($main_menu['classes']) && !empty($main_menu['classes']['container']) ? ' ' . apply_filters('filter_classes', $main_menu['classes']['container']) : ''); ?>">
+					<ul id="primary-menu" class="nav navbar-nav<?php echo (!empty($main_menu['classes']) && !empty($main_menu['classes']['menu']) ? ' ' . apply_filters('filter_classes', $main_menu['classes']['menu']) : ''); ?>">
+						<?php foreach ($main_menu['links'] as $link): ?>
+							<li<?php echo !empty($link['class']) ? ' class="' . apply_filters('filter_classes', $link['class']) . '"' : ''; ?>>
+								<?php if (!empty($link['href']) && !empty($link['title'])): ?>
+									<a href="<?php echo esc_url($link['href']); ?>" <?php echo !empty($link['target']) ? ' target="' . $link['target'] . '"' : ''; ?>><?php echo esc_html($link['title']); ?></a>
+								<?php elseif (!empty($link['title'])):
+									echo esc_html($link['title']);
+								endif; ?>
+								</li>
+							<?php endforeach; ?>
+					</ul>
+				</div>
+			<?php
+			endif;
 
-		do_action('header1_after_nav_menu', $main_menu);
+			do_action('header1_after_nav_menu', $main_menu);
 
-		if (!empty($main_menu['wrap']) && !empty($main_menu['wrap']['after'])):
- 			echo $main_menu['wrap']['after'];
- 		endif;
+			if (!empty($main_menu['wrap']) && !empty($main_menu['wrap']['after'])):
+				echo $main_menu['wrap']['after'];
+			endif;
 
-		do_action('header1_before_after_menu', $main_menu, 'after', 'menu-after'); ?>
+			do_action('header1_before_after_menu', $main_menu, 'after', 'menu-after'); ?>
 
-	</nav>
+		</nav>
 	<?php endif; ?>
 </div>
