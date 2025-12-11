@@ -3,6 +3,10 @@ $burger-color: #B6B6B6;
 .navigation-menu-banner {
 	background: url("../img/nav-menu-banner.png") center/cover no-repeat;
 	z-index: 1030;
+
+	span {
+		font-weight: 700;
+	}
 	
 	.banner-links {
 		letter-spacing: 0.65px;
@@ -16,9 +20,6 @@ $burger-color: #B6B6B6;
 }
 
 .header-1 {
-
-	p {}
-
 	a {
 		&.navbar-brand {
 			img {

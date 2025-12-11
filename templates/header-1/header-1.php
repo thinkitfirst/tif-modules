@@ -5,7 +5,7 @@ if (!defined('ABSPATH')) exit; ?>
 <?php if ($banner['status']): ?>
 	<div class="navigation-menu-banner tif-px-md-65 tif-px-35 tif-py-10 text-center position-relative">
 		<?php if ($banner['text']): ?>
-			<p class="tif-color-white tif-mb-0 tif-fs-16 tif-fw-bold">
+			<p class="tif-color-white tif-mb-0 tif-fs-16">
 				<span class="tif-mr-25"><?php echo $banner['text']; ?></span>
 				<span class="tif-fs-13 banner-links text-nowrap">
 					<?php foreach ($banner['links'] as $link): ?>
