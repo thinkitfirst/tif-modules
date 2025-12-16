@@ -9,7 +9,7 @@ if (!defined('ABSPATH')) exit; ?>
 				<span class="tif-mr-25"><?php echo $banner['text']; ?></span>
 				<span class="tif-fs-13 banner-links text-nowrap">
 					<?php foreach ($banner['links'] as $link): ?>
-						<a href="<?php echo esc_url($link['link']['url']); ?>" class="tif-color-cpb-bravo tif-fs-13 tif-fw-bold text-uppercase"><?php echo $link['link']['title']; ?></a>
+						<a href="<?php echo esc_url($link['link']['url']); ?>" class="tif-color-cpb-bravo tif-fs-13 tif-fw-bold text-uppercase" target="<?php echo $link['link']['target']; ?>"><?php echo $link['link']['title']; ?></a>
 						<?php if ($link !== end($banner['links'])): ?>&nbsp;&nbsp;|&nbsp;&nbsp;<?php endif; ?>
 					<?php endforeach; ?>
 				</span>
